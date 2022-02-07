@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useListaLeiloes from '../../hooks/useListaLeiloes';
 
-import { FlatList, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 import Leilao from './componentes/Leilao';
 
 export default function ListaLeiloes() {
@@ -14,6 +14,10 @@ export default function ListaLeiloes() {
     setCarregando(false);
   };
 
+  if (!leiloes || leiloes.length === 0) {
+    return <View />
+  }
+
   return (
     <FlatList
       data={leiloes}
@@ -21,6 +25,13 @@ export default function ListaLeiloes() {
       renderItem={({ item }) => <Leilao {...item} />}
       onRefresh={atualizaLista}
       refreshing={carregando}
+      contentContainerStyle={estilos.lista}
     />
   );
 }
+
+const estilos = StyleSheet.create({
+  lista: {
+    paddingVertical: 8,
+  },
+});

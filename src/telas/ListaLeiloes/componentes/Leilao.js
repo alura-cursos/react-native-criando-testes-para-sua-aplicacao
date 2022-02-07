@@ -1,12 +1,14 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
-import { View, Text, StyleSheet } from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import Icone from '../../../componentes/Icone';
+import Cartao from '../../../componentes/Cartao';
 
 import { formataReal } from '../../../util/monetario';
 
-export default function Leilao({ nome, valorInicial, lances, icone, cor }) {
-  const estilos = funcaoEstilos(cor);
+export default function Leilao({ id, nome, valorInicial, lances, icone, cor }) {
+  const navigation = useNavigation();
   let valorLance = valorInicial;
   let legendaLance = 'Valor Inicial';
 
@@ -17,10 +19,12 @@ export default function Leilao({ nome, valorInicial, lances, icone, cor }) {
   }
 
   return (
-    <View style={estilos.cartao}>
-      <View style={estilos.topo}>
-        <FontAwesome5 name={icone || "question"} size={48} color="#ffffff" />
-      </View>
+    <Cartao 
+      onPress={() => navigation.navigate('Leilao', { id })}
+      style={estilos.cartao}
+      Componente={TouchableOpacity}
+    >
+      <Icone cor={cor} nome={icone} style={estilos.topo} />
       <View style={estilos.info}>
         <Text style={estilos.nome}>{nome}</Text>
         <View style={estilos.valor}>
@@ -28,36 +32,18 @@ export default function Leilao({ nome, valorInicial, lances, icone, cor }) {
           <Text style={estilos.valorLance}>{formataReal(valorLance)}</Text>
         </View>
       </View>
-    </View>
+    </Cartao>
   );
 }
 
-const funcaoEstilos = (cor) => StyleSheet.create({
+const estilos = StyleSheet.create({
   cartao: {
     marginHorizontal: 16,
     marginVertical: 8,
-    
-    borderRadius: 10,
-
-    backgroundColor: '#fff',
-
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-
-    elevation: 4,
   },
   topo: {
-    backgroundColor: cor || '#093366',
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16,
   },
   info: {
     padding: 8,

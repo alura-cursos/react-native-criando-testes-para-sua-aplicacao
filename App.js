@@ -1,11 +1,12 @@
+import React from 'react';
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
-import ListaLeiloes from './src/telas/ListaLeiloes';
+import AppRotas from './src/rotas/AppRotas';
 
 export default function App() {
   return (
     <SafeAreaView style={estilos.container}>
       <StatusBar />
-      <ListaLeiloes />
+      <AppRotas />
     </SafeAreaView>
   );
 }
