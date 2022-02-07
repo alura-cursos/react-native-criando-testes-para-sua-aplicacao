@@ -21,7 +21,7 @@
     {
       "id": 2,
       "nome": "Geladeira",
-      "descricao": "Geladeira Eletrolux",
+      "descricao": "Geladeira 300 litros",
       "valorInicial": 500,
       "icone": "cheese",
       "cor": "#6bd1ff",
@@ -43,7 +43,7 @@
     {
       "id": 3,
       "nome": "Fogão",
-      "descricao": "Fogão Elétrico",
+      "descricao": "Fogão 6 bocas",
       "valorInicial": 800,
       "icone": "fire",
       "cor": "#f16165",
@@ -65,7 +65,7 @@
     {
       "id": 4,
       "nome": "Microondas",
-      "descricao": "Microondas Elétrico",
+      "descricao": "Microondas 34 litros",
       "valorInicial": 1200,
       "icone": "cube",
       "cor": "#00c86f",
@@ -79,41 +79,29 @@
     {
       "id": 5,
       "nome": "Notebook",
-      "descricao": "Notebook Dell",
-      "valorInicial": 2000,
+      "descricao": "Notebook Gamer",
+      "valorInicial": 5000,
       "icone": "laptop",
       "cor": "#dc6ebe",
       "lances": [
         {
           "id": 1,
-          "valor": 2100
+          "valor": 5100
         },
         {
           "id": 2,
-          "valor": 2200
+          "valor": 5200
         },
         {
           "id": 3,
-          "valor": 2500
-        },
-        {
-          "id": 4,
-          "valor": 2700
-        },
-        {
-          "id": 5,
-          "valor": 2800
-        },
-        {
-          "id": 6,
-          "valor": 2900
+          "valor": 5300
         }
       ]
     },
     {
       "id": 6,
       "nome": "Tablet",
-      "descricao": "Tablet Samsung",
+      "descricao": "Tablet 34GB",
       "valorInicial": 1500,
       "icone": "tablet-alt",
       "cor": "#ff8c2a",
@@ -121,15 +109,15 @@
     },
     {
       "id": 7,
-      "nome": "Celta",
-      "descricao": "Chevrolet Celta 2006",
-      "valorInicial": 14000,
+      "nome": "Carro",
+      "descricao": "Carro Novo",
+      "valorInicial": 50000,
       "icone": "car",
       "cor": "#9cd33b",
       "lances": [
         {
           "id": 1,
-          "valor": 14500
+          "valor": 50001
         }
       ]
     }
