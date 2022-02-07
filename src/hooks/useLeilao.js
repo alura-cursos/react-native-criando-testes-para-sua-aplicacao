@@ -8,7 +8,6 @@ export default function useLeilao(id) {
   const obterLeilao = async () => {
     try {
       const resposta = await apiLeiloes.get(`/leiloes/${id}`);
-      resposta.data.lances.reverse();
       setLeilao(resposta.data);
     } catch(erro) {
       setLeilao({});

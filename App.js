@@ -1,12 +1,19 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
+import { KeyboardAvoidingView, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import AppRotas from './src/rotas/AppRotas';
 
 export default function App() {
   return (
     <SafeAreaView style={estilos.container}>
       <StatusBar />
-      <AppRotas />
+      <KeyboardAvoidingView 
+        style={estilos.teclado}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 45}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}>
+        <AppRotas />
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
@@ -14,5 +21,8 @@ export default function App() {
 const estilos = StyleSheet.create({
   container: {
     flex: 1,
-  }
+  },
+  teclado: {
+    flex: 1,
+  },
 });

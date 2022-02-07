@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TextInput, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { FontAwesome5 } from '@expo/vector-icons';
 
@@ -25,7 +25,7 @@ export default function EnviaLance({ enviarLance, cor }) {
     setEnviando(false);
   }
 
-  return <BlurView intensity={10} style={estilos.fundo}>
+  return <BlurView intensity={Platform.OS === 'ios' ? 10 : 100} style={estilos.fundo} tint="light">
     {!!erro && <Text style={estilos.erro}>{erro}</Text>}
     <TextInput 
       value={valor} 
@@ -33,6 +33,7 @@ export default function EnviaLance({ enviarLance, cor }) {
       placeholder="R$"
       editable={!enviando}
       style={estilos.entrada}
+      keyboardType="decimal-pad"
     />
     <TouchableOpacity 
       onPress={validaEnvio}
