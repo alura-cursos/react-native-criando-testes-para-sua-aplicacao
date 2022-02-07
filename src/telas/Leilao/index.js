@@ -14,6 +14,13 @@ export default function Leilao() {
   const id = route.params.id;
   const [ leilao, obterLeilao, enviarLance ] = useLeilao(id);
   
+  const novoLance = async (valor) => {
+    const resposta = await enviarLance(valor);
+    if (resposta)
+      await atualizaLeilao();
+    return resposta;
+  }
+
   const atualizaLeilao = async () => {
     setCarregando(true);
     await obterLeilao();
@@ -32,7 +39,16 @@ export default function Leilao() {
       ListHeaderComponent={() => <Topo {...leilao} />}
       onRefresh={atualizaLeilao}
       refreshing={carregando}
+      contentContainerStyle={estilos.lista}
     />
-    <EnviaLance cor={leilao.cor} enviarLance={enviarLance} />
+    <EnviaLance cor={leilao.cor} enviarLance={novoLance} />
   </>
 }
+
+const estilos = StyleSheet.create({
+  lista: {
+    /* Padding para evitar que o último item da lista
+    fique por baixo do formulário de envio de lance */
+    paddingBottom: 110,
+  },
+});

@@ -1,14 +1,17 @@
 import React from 'react';
 
-import { Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import Cartao from '../../../componentes/Cartao';
 
 import { formataReal } from '../../../util/monetario';
 
-export default function Lance({ valor, cor }) {
+export default function Lance({ id, valor, cor }) {
   return <Cartao style={estilos.cartao}>
-    <FontAwesome5 name="hand-paper" size={24} color={cor} />
+    <View style={estilos.inicio}>
+      <FontAwesome5 name="hand-paper" size={24} color={cor} />
+      <Text style={estilos.identificador}>#{id}</Text>
+    </View>
     <Text style={estilos.lance}>{formataReal(valor)}</Text>
   </Cartao>
 
@@ -25,8 +28,18 @@ const estilos = StyleSheet.create({
     marginHorizontal: 16,
     marginVertical: 8,
   },
+  inicio: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  identificador: {
+    fontSize: 14,
+    marginLeft: 8,
+    color: '#4A4A4A',
+  },
   lance: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#4A4A4A',
   }
 });

@@ -1,6 +1,6 @@
 export function validaLance(valor, { lances, valorInicial }) {
   try {
-    const valorNumerico = parseFloat(valor);
+    const valorNumerico = parseFloat(formataLance(valor));
   
     if (!valorNumerico)
       return false;
@@ -11,11 +11,14 @@ export function validaLance(valor, { lances, valorInicial }) {
     if (valorNumerico <= 0)
       return false;
 
-    if (valorNumerico != valor)
+    /* valor deve conter pelo menos um número na 
+    frente e, opcionalmente, uma vírgula com um 
+    ou dois números atrás */
+    if (!valor.match(/([0-9]+)((\,[0-9]{1,2})?)/))
       return false;
   
     if (lances.length > 0) {
-      if (valorNumerico <= lances[lances.length - 1].valorNumerico) {
+      if (valorNumerico <= lances[lances.length - 1].valor) {
         return false;
       }
     }
@@ -27,12 +30,16 @@ export function validaLance(valor, { lances, valorInicial }) {
 }
 
 export function adicionaLance(valor, leilao) {
-  const valorNumerico = parseFloat(valor);
+  const valorNumerico = parseFloat(formataLance(valor));
 
   const lance = {
-    id: leilao.lances.length,
+    id: leilao.lances.length + 1,
     valor: valorNumerico,
   };
 
   leilao.lances.push(lance);
+}
+
+export function formataLance(valor) {
+  return valor.replace('.', '').replace(',', '.');
 }
