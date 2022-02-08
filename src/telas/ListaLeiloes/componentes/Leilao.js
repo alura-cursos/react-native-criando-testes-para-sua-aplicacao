@@ -7,16 +7,8 @@ import Cartao from '../../../componentes/Cartao';
 
 import { formataDecimalParaReal } from '../../../negocio/formatadores/moeda';
 
-export default function Leilao({ id, nome, valorInicial, lances, icone, cor }) {
+export default function Leilao({ id, nome, valorInicial, icone, cor }) {
   const navigation = useNavigation();
-  let valorLance = valorInicial;
-  let legendaLance = 'Valor Inicial';
-
-  if (lances.length > 0) {
-    const ultimoLance = lances[lances.length - 1];
-    valorLance = ultimoLance.valor;
-    legendaLance = "Melhor Lance";
-  }
 
   return (
     <Cartao 
@@ -28,8 +20,8 @@ export default function Leilao({ id, nome, valorInicial, lances, icone, cor }) {
       <View style={estilos.info}>
         <Text style={estilos.nome}>{nome}</Text>
         <View style={estilos.valor}>
-          <Text style={estilos.legendaLance}>{legendaLance}</Text>
-          <Text style={estilos.valorLance}>{formataDecimalParaReal(valorLance)}</Text>
+          <Text style={estilos.legendaLance}>Valor Inicial</Text>
+          <Text style={estilos.valorLance}>{formataDecimalParaReal(valorInicial)}</Text>
         </View>
       </View>
     </Cartao>

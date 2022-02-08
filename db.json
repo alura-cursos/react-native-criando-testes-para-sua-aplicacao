@@ -6,37 +6,7 @@
       "descricao": "TV de LED 50\"",
       "valorInicial": 1000,
       "icone": "tv",
-      "cor": "#ffba05",
-      "lances": [
-        {
-          "id": 7,
-          "valor": 1500
-        },
-        {
-          "id": 6,
-          "valor": 1450
-        },
-        {
-          "id": 5,
-          "valor": 1401
-        },
-        {
-          "id": 4,
-          "valor": 1400
-        },
-        {
-          "id": 3,
-          "valor": 1300
-        },
-        {
-          "id": 2,
-          "valor": 1200
-        },
-        {
-          "id": 1,
-          "valor": 1100
-        }
-      ]
+      "cor": "#ffba05"
     },
     {
       "id": 2,
@@ -44,17 +14,7 @@
       "descricao": "Geladeira 200 litros",
       "valorInicial": 500,
       "icone": "cheese",
-      "cor": "#6bd1ff",
-      "lances": [
-        {
-          "id": 2,
-          "valor": 600.01
-        },
-        {
-          "id": 1,
-          "valor": 600
-        }
-      ]
+      "cor": "#6bd1ff"
     },
     {
       "id": 3,
@@ -62,13 +22,7 @@
       "descricao": "Fogão 6 bocas",
       "valorInicial": 800,
       "icone": "fire",
-      "cor": "#f16165",
-      "lances": [
-        {
-          "id": 1,
-          "valor": 800
-        }
-      ]
+      "cor": "#f16165"
     },
     {
       "id": 4,
@@ -76,8 +30,7 @@
       "descricao": "Microondas 34 litros",
       "valorInicial": 1200,
       "icone": "cube",
-      "cor": "#00c86f",
-      "lances": []
+      "cor": "#00c86f"
     },
     {
       "id": 5,
@@ -85,13 +38,7 @@
       "descricao": "Notebook Gamer",
       "valorInicial": 5000,
       "icone": "laptop",
-      "cor": "#dc6ebe",
-      "lances": [
-        {
-          "id": 1,
-          "valor": 5100
-        }
-      ]
+      "cor": "#dc6ebe"
     },
     {
       "id": 6,
@@ -99,13 +46,7 @@
       "descricao": "Tablet 34GB",
       "valorInicial": 1500,
       "icone": "tablet-alt",
-      "cor": "#ff8c2a",
-      "lances": [
-        {
-          "id": 1,
-          "valor": 1500
-        }
-      ]
+      "cor": "#ff8c2a"
     },
     {
       "id": 7,
@@ -113,8 +54,29 @@
       "descricao": "Carro Popular Novo",
       "valorInicial": 50000,
       "icone": "car",
-      "cor": "#9cd33b",
-      "lances": []
+      "cor": "#9cd33b"
+    }
+  ],
+  "lances": [
+    {
+      "valor": 1000,
+      "leilaoId": 1,
+      "id": 1
+    },
+    {
+      "valor": 1000.01,
+      "leilaoId": 1,
+      "id": 2
+    },
+    {
+      "valor": 800.01,
+      "leilaoId": 3,
+      "id": 3
+    },
+    {
+      "valor": 800.02,
+      "leilaoId": 3,
+      "id": 4
     }
   ]
 }

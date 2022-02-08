@@ -17,12 +17,3 @@ export async function obtemLeilao(id) {
     return {};
   }
 }
-
-export async function mudaLeilao(leilao) {
-  try {
-    await apiLeiloes.put(`/leiloes/${leilao.id}`, leilao);
-    return true;
-  } catch(erro) {
-    return false;
-  }
-}
