@@ -1,6 +1,6 @@
 import apiLeiloes from '../servicos/apiLeiloes';
 
-export async function obterLeiloes() {
+export async function obtemLeiloes() {
   try {
     const resposta = await apiLeiloes.get(`/leiloes`);
     return resposta.data;
@@ -9,7 +9,7 @@ export async function obterLeiloes() {
   }
 }
 
-export async function obterLeilao(id) {
+export async function obtemLeilao(id) {
   try {
     const resposta = await apiLeiloes.get(`/leiloes/${id}`);
     return resposta.data;
@@ -18,7 +18,7 @@ export async function obterLeilao(id) {
   }
 }
 
-export async function mudarLeilao(leilao) {
+export async function mudaLeilao(leilao) {
   try {
     await apiLeiloes.put(`/leiloes/${leilao.id}`, leilao);
     return true;

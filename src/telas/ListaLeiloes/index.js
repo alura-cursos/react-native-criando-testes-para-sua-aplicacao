@@ -5,12 +5,12 @@ import { View, FlatList, StyleSheet } from 'react-native';
 import Leilao from './componentes/Leilao';
 
 export default function ListaLeiloes() {
-  const [leiloes, obterLeiloes] = useListaLeiloes();
+  const [leiloes, obtemLeiloes] = useListaLeiloes();
   const [carregando, setCarregando] = useState(false);
   
   const atualizaLista = async () => {
     setCarregando(true);
-    await obterLeiloes();
+    await obtemLeiloes();
     setCarregando(false);
   };
 

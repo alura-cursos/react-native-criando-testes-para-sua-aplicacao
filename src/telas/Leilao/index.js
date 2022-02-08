@@ -12,10 +12,10 @@ export default function Leilao() {
   const [carregando, setCarregando] = useState(false);
 
   const id = route.params.id;
-  const [ leilao, obterLeilao, enviarLance ] = useLeilao(id);
+  const [ leilao, obtemLeilao, enviaLance ] = useLeilao(id);
   
   const novoLance = async (valor) => {
-    const estadoLance = await enviarLance(valor);
+    const estadoLance = await enviaLance(valor);
     if (estadoLance.valido)
       await atualizaLeilao();
 
@@ -24,7 +24,7 @@ export default function Leilao() {
 
   const atualizaLeilao = async () => {
     setCarregando(true);
-    await obterLeilao();
+    await obtemLeilao();
     setCarregando(false);
   };
 
@@ -42,7 +42,7 @@ export default function Leilao() {
       refreshing={carregando}
       contentContainerStyle={estilos.lista}
     />
-    <EnviaLance cor={leilao.cor} enviarLance={novoLance} />
+    <EnviaLance cor={leilao.cor} enviaLance={novoLance} />
   </>
 }
 

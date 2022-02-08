@@ -3,7 +3,7 @@ import { Text, TextInput, TouchableOpacity, StyleSheet, Platform } from 'react-n
 import { BlurView } from 'expo-blur';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-export default function EnviaLance({ enviarLance, cor }) {
+export default function EnviaLance({ enviaLance, cor }) {
   const [valor, setValor] = useState('');
   const [erro, setErro] = useState('');
   const [enviando, setEnviando] = useState(false);
@@ -14,7 +14,7 @@ export default function EnviaLance({ enviarLance, cor }) {
     setEnviando(true);
     setErro('');
 
-    const estadoLance = await enviarLance(valor);
+    const estadoLance = await enviaLance(valor);
 
     if (estadoLance.valido) {
       setValor('');
