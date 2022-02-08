@@ -17,7 +17,6 @@ export default function EnviaLance({ enviaLance, cor }) {
     setErro('');
     setSucesso('');
 
-
     const estadoLance = await enviaLance(valor);
 
     if (estadoLance === ENVIADO) {
