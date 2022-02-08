@@ -3,7 +3,7 @@
     {
       "id": 1,
       "nome": "TV",
-      "descricao": "TV de LED 32\"",
+      "descricao": "TV de LED 50\"",
       "valorInicial": 1000,
       "icone": "tv",
       "cor": "#ffba05",
@@ -41,7 +41,7 @@
     {
       "id": 2,
       "nome": "Geladeira",
-      "descricao": "Geladeira 300 litros",
+      "descricao": "Geladeira 200 litros",
       "valorInicial": 500,
       "icone": "cheese",
       "cor": "#6bd1ff",
@@ -77,12 +77,7 @@
       "valorInicial": 1200,
       "icone": "cube",
       "cor": "#00c86f",
-      "lances": [
-        {
-          "id": 1,
-          "valor": 1300
-        }
-      ]
+      "lances": []
     },
     {
       "id": 5,
@@ -115,16 +110,11 @@
     {
       "id": 7,
       "nome": "Carro",
-      "descricao": "Carro Novo",
+      "descricao": "Carro Popular Novo",
       "valorInicial": 50000,
       "icone": "car",
       "cor": "#9cd33b",
-      "lances": [
-        {
-          "id": 1,
-          "valor": 50001
-        }
-      ]
+      "lances": []
     }
   ]
 }
