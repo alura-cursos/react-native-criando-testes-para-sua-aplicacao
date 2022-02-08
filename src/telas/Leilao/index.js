@@ -15,10 +15,11 @@ export default function Leilao() {
   const [ leilao, obterLeilao, enviarLance ] = useLeilao(id);
   
   const novoLance = async (valor) => {
-    const resposta = await enviarLance(valor);
-    if (resposta)
+    const estadoLance = await enviarLance(valor);
+    if (estadoLance.valido)
       await atualizaLeilao();
-    return resposta;
+
+    return estadoLance;
   }
 
   const atualizaLeilao = async () => {

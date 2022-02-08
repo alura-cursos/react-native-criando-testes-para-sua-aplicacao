@@ -14,12 +14,12 @@ export default function EnviaLance({ enviarLance, cor }) {
     setEnviando(true);
     setErro('');
 
-    const sucesso = await enviarLance(valor);
+    const estadoLance = await enviarLance(valor);
 
-    if (sucesso) {
+    if (estadoLance.valido) {
       setValor('');
     } else {
-      setErro('Lance não enviado');
+      setErro(estadoLance.erro);
     }
 
     setEnviando(false);

@@ -12,16 +12,22 @@ export default function useLeilao(id) {
   };
   
   const enviarLance = async (valor) => {
-    if (!validaLance(valor, leilao))
-      return false;
+    const estadoLance = validaLance(valor, leilao);
+    if (!estadoLance.valido)
+      return estadoLance;
 
     const novoLeilao = formataLeilaoComNovoLance(valor, leilao);
 
     const mudado = await mudarLeilao(novoLeilao);
-    if (mudado)
+    if (mudado) {
       atualizaLeilao();
+      return estadoLance;
+    }
 
-    return mudado;
+    return {
+      valido: false,
+      erro: "Servidor indisponível",
+    };
   };
 
   useEffect(() => {

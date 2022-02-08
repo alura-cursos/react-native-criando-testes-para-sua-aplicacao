@@ -47,6 +47,10 @@
       "cor": "#6bd1ff",
       "lances": [
         {
+          "id": 2,
+          "valor": 600.01
+        },
+        {
           "id": 1,
           "valor": 600
         }
@@ -101,7 +105,12 @@
       "valorInicial": 1500,
       "icone": "tablet-alt",
       "cor": "#ff8c2a",
-      "lances": []
+      "lances": [
+        {
+          "id": 1,
+          "valor": 1500
+        }
+      ]
     },
     {
       "id": 7,
