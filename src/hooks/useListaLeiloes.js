@@ -1,21 +1,17 @@
 import { useState, useEffect } from 'react';
-import apiLeiloes from '../servicos/apiLeiloes';
+import { obterLeiloes } from '../repositorio/leilao';
 
 export default function useListaLeiloes() {
   const [leiloes, setLeiloes] = useState([]);
 
-  const obterLeiloes = async () => {
-    try {
-      const resposta = await apiLeiloes.get(`/leiloes`);
-      setLeiloes(resposta.data);
-    } catch (erro) {
-      setLeiloes([]);
-    }
-  };  
+  const atualizaLeiloes = async () => {
+    const leiloesAtualizados = await obterLeiloes();
+    setLeiloes(leiloesAtualizados);
+  };
 
   useEffect(() => {
-    obterLeiloes();
+    atualizaLeiloes();
   }, []);
 
-  return [ leiloes, obterLeiloes ];
+  return [ leiloes, atualizaLeiloes ];
 }

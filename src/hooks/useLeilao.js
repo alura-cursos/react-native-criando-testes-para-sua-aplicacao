@@ -1,38 +1,33 @@
 import { useState, useEffect } from 'react';
-import apiLeiloes from '../servicos/apiLeiloes';
-import { validaLance, adicionaLance } from '../util/lance';
+import { obterLeilao, mudarLeilao } from '../repositorio/leilao';
+import { validaLance } from '../negocio/validadores/lance';
+import { formataLeilaoComNovoLance } from '../negocio/formatadores/lance';
 
 export default function useLeilao(id) {
   const [leilao, setLeilao] = useState({});
 
-  const obterLeilao = async () => {
-    try {
-      const resposta = await apiLeiloes.get(`/leiloes/${id}`);
-      setLeilao(resposta.data);
-    } catch(erro) {
-      setLeilao({});
-      console.log(erro, id);
-    }
+  const atualizaLeilao = async () => {
+    const leilaoAtualizado = await obterLeilao(id);
+    setLeilao(leilaoAtualizado);
   };
   
   const enviarLance = async (valor) => {
     if (!validaLance(valor, leilao))
       return false;
 
-    adicionaLance(valor, leilao);
+    const novoLeilao = formataLeilaoComNovoLance(valor, leilao);
 
-    try {
-      const resposta = await apiLeiloes.put(`/leiloes/${id}`, leilao);
-      obterLeilao();
-      return true;
-    } catch(erro) {
-      return false;
-    }
+    const mudado = await mudarLeilao(novoLeilao);
+    if (mudado)
+      atualizaLeilao();
+
+    return mudado;
   };
 
   useEffect(() => {
-    obterLeilao();
+    atualizaLeilao();
   }, []);
 
-  return [ leilao, obterLeilao, enviarLance ];
+  return [ leilao, atualizaLeilao, enviarLance ];
 }
+

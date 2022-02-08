@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import useLeilao from '../../hooks/useLeilao';
 
-import { Text, FlatList, View, StyleSheet } from 'react-native';
+import { FlatList, View, StyleSheet } from 'react-native';
 import Topo from './componentes/Topo';
 import Lance from './componentes/Lance';
 import EnviaLance from './componentes/EnviaLance';

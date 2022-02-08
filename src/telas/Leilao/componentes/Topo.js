@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Icone from '../../../componentes/Icone';
 
-import { formataReal } from '../../../util/monetario';
+import { formataDecimalParaReal } from '../../../negocio/formatadores/moeda';
 
 export default function Topo({ nome, descricao, lances, valorInicial, cor, icone }) {
   let melhorLance = valorInicial;
@@ -21,12 +21,12 @@ export default function Topo({ nome, descricao, lances, valorInicial, cor, icone
       <View style={estilos.resumo}>
         <View style={estilos.melhorLance}>
           <Text style={estilos.legendaLance}>Melhor Lance</Text>
-          <Text style={estilos.valorLance}>{formataReal(melhorLance)}</Text>
+          <Text style={estilos.valorLance}>{formataDecimalParaReal(melhorLance)}</Text>
         </View>
         <View style={estilos.divisor} />
         <View style={estilos.lanceInicial}>
           <Text style={estilos.legendaLance}>Valor Inicial</Text>
-          <Text style={estilos.valorLance}>{formataReal(valorInicial)}</Text>
+          <Text style={estilos.valorLance}>{formataDecimalParaReal(valorInicial)}</Text>
         </View>
       </View>
     </View>

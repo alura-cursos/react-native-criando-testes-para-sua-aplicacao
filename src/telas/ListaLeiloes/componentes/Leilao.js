@@ -5,7 +5,7 @@ import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import Icone from '../../../componentes/Icone';
 import Cartao from '../../../componentes/Cartao';
 
-import { formataReal } from '../../../util/monetario';
+import { formataDecimalParaReal } from '../../../negocio/formatadores/moeda';
 
 export default function Leilao({ id, nome, valorInicial, lances, icone, cor }) {
   const navigation = useNavigation();
@@ -29,7 +29,7 @@ export default function Leilao({ id, nome, valorInicial, lances, icone, cor }) {
         <Text style={estilos.nome}>{nome}</Text>
         <View style={estilos.valor}>
           <Text style={estilos.legendaLance}>{legendaLance}</Text>
-          <Text style={estilos.valorLance}>{formataReal(valorLance)}</Text>
+          <Text style={estilos.valorLance}>{formataDecimalParaReal(valorLance)}</Text>
         </View>
       </View>
     </Cartao>
