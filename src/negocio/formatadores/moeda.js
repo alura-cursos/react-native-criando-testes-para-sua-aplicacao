@@ -6,6 +6,6 @@ export function formataDecimalParaReal(valor) {
 }
 
 export function formataBrasileiroParaDecimal(valor) {
-  const ajustaPontuacao = valor.replace('.', '').replace(',', '.');
-  return parseFloat(ajustaPontuacao);
+  const pontuacaoAjustada = valor.replace('.', '').replace(',', '.');
+  return parseFloat(pontuacaoAjustada);
 }

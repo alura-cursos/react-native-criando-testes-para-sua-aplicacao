@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { obtemLeilao } from '../repositorio/leilao';
 import { adicionaLance, obtemLancesDoLeilao } from '../repositorio/lance';
-import { validaLance } from '../negocio/validadores/lance';
+import { validaLance, validaFormatoNumericoDoLance } from '../negocio/validadores/lance';
 import { formataBrasileiroParaDecimal } from '../negocio/formatadores/moeda';
+import { VALIDO, NAO_ENVIADO, ENVIADO } from '../negocio/constantes/estadosLance';
 
 export default function useLeilao(id) {
   const [leilao, setLeilao] = useState({});
@@ -14,25 +15,29 @@ export default function useLeilao(id) {
   };
   
   const enviaLance = async (valor) => {
-    const estadoLance = validaLance(valor, leilao);
-    if (!estadoLance.valido)
+    const estadoFormatoLance = validaFormatoNumericoDoLance(valor);
+    if (estadoFormatoLance !== VALIDO) {
+      return estadoFormatoLance;
+    }
+
+    const valorNumerico = formataBrasileiroParaDecimal(valor);
+    const estadoLance = validaLance(valorNumerico, leilao);
+    if (estadoLance !== VALIDO) {
       return estadoLance;
+    }
 
     const lanceFormatado = { 
-      valor: formataBrasileiroParaDecimal(valor), 
+      valor: valorNumerico, 
       leilaoId: leilao.id 
     };
 
     const adicionado = await adicionaLance(lanceFormatado);
     if (adicionado) {
-      atualizaLeilao();
-      return estadoLance;
+      await atualizaLeilao();
+      return ENVIADO;
     }
 
-    return {
-      valido: false,
-      erro: "Servidor indisponível",
-    };
+    return NAO_ENVIADO;
   };
 
   useEffect(() => {

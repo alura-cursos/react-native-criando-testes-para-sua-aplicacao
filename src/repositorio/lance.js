@@ -3,10 +3,8 @@ import apiLeiloes from '../servicos/apiLeiloes';
 export async function obtemLancesDoLeilao(id) {
   try {
     const resposta = await apiLeiloes.get(`/lances?leilaoId=${id}&_sort=valor&_order=desc`);
-    console.log(resposta);
     return resposta.data;
   } catch(erro) {
-    console.log(erro);
     return [];
   }
 }

@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Text, TextInput, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { ENVIADO } from '../../../negocio/constantes/estadosLance';
 
 export default function EnviaLance({ enviaLance, cor }) {
   const [valor, setValor] = useState('');
   const [erro, setErro] = useState('');
+  const [sucesso, setSucesso] = useState('');
   const [enviando, setEnviando] = useState(false);
 
   const estilos = funcaoEstilos(cor, erro);
@@ -13,13 +15,16 @@ export default function EnviaLance({ enviaLance, cor }) {
   const validaEnvio = async () => {
     setEnviando(true);
     setErro('');
+    setSucesso('');
+
 
     const estadoLance = await enviaLance(valor);
 
-    if (estadoLance.valido) {
+    if (estadoLance === ENVIADO) {
       setValor('');
+      setSucesso(estadoLance);
     } else {
-      setErro(estadoLance.erro);
+      setErro(estadoLance);
     }
 
     setEnviando(false);
@@ -27,6 +32,7 @@ export default function EnviaLance({ enviaLance, cor }) {
 
   return <BlurView intensity={Platform.OS === 'ios' ? 10 : 100} style={estilos.fundo} tint="light">
     {!!erro && <Text style={estilos.erro}>{erro}</Text>}
+    {!!sucesso && <Text style={estilos.sucesso}>{sucesso}</Text>}
     <TextInput 
       value={valor} 
       onChangeText={setValor}
@@ -60,6 +66,15 @@ const funcaoEstilos = (cor, erro) => StyleSheet.create({
     marginHorizontal: 8,
 
     color: '#FF0000',
+
+    fontSize: 14,
+    marginBottom: 8,
+  },
+  sucesso: {
+    width: '100%',
+    marginHorizontal: 8,
+
+    color: '#2d6628',
 
     fontSize: 14,
     marginBottom: 8,

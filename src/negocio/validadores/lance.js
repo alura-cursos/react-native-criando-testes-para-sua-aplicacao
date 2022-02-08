@@ -1,48 +1,41 @@
-import { formataBrasileiroParaDecimal } from "../formatadores/moeda";
+import {
+  VALIDO,
+  INVALIDO,
+  MENOR_QUE_VALOR_INICIAL,
+  MENOR_QUE_LANCES
+} from "../constantes/estadosLance";
 
-export function validaLance(valor, { lances, valorInicial }) {
-  const retorno = {
-    valido: false,
-    erro: "Lance inválido",
-  };
-  
-  try {
-    const valorNumerico = formataBrasileiroParaDecimal(valor);
-  
-    // Validações de valor numérico
-
-    if (!valor || !valorNumerico || valorNumerico <= 0) {
-      retorno.erro = "Digite um valor numérico maior que zero";
-      return retorno;
-    }
-
-    /* valor deve conter pelo menos um número na 
-    frente e, opcionalmente, uma vírgula com um 
-    ou dois números atrás */
-    if (!valor.match(/^[0-9]+(\,[0-9]{1,2})?$/)) {
-      retorno.erro = "Digite um valor numérico como: \"100\" ou \"99,99\"";
-      return retorno;
-    }
-
-    // Validação de maior lance
-  
-    const maiorValor = !lances.find(lance => lance.valor >= valorNumerico);
-    if (!maiorValor) {
-      retorno.erro = "Lance menor que o maior lance já realizado";
-      return retorno;
-    }
-
-    // Validação de primeiro lance
-
-    if (valorNumerico < valorInicial) {
-      retorno.erro = "Lance menor que o valor inicial";
-      return retorno;
-    }
-
-  } catch (erro) {
-    return retorno;
+export function validaFormatoNumericoDoLance(valorEmTexto) {
+  if (valorEmTexto.match(/^[1-9]+[0-9]*(\,[0-9]{1,2})?$/)) {
+    return VALIDO;
   }
 
-  retorno.valido = true;
-  return retorno;
+  return INVALIDO;
+}
+
+export function validaLance(valor, { lances, valorInicial }) {
+  const lanceMaiorQueInicial = validaLanceMaiorQueInicial(valor, valorInicial);
+  
+  if(lanceMaiorQueInicial === VALIDO) {
+    return validaLanceMaiorQueLances(valor, lances);
+  }
+
+  return lanceMaiorQueInicial;
+}
+
+function validaLanceMaiorQueInicial(valor, valorInicial) {
+  if (valor > valorInicial) {
+    return VALIDO;
+  }
+
+  return MENOR_QUE_VALOR_INICIAL;
+}
+
+function validaLanceMaiorQueLances(valor, lances) {
+  const lanceMaiorQueValor = lances.find(lance => lance.valor >= valor);
+  if (!lanceMaiorQueValor) {
+    return VALIDO;
+  }
+
+  return MENOR_QUE_LANCES;
 }
