@@ -14,17 +14,22 @@ export function validaFormatoNumericoDoLance(valorEmTexto) {
 }
 
 export function validaLance(valor, { lances, valorInicial }) {
-  const lanceMaiorQueInicial = validaLanceMaiorQueInicial(valor, valorInicial);
+  const lanceMaiorOuIgualAoInicial = validaLanceMaiorOuIgualAoInicial(valor, valorInicial);
+  const lanceMaiorQueLances = validaLanceMaiorQueLances(valor, lances);
   
-  if(lanceMaiorQueInicial === VALIDO) {
-    return validaLanceMaiorQueLances(valor, lances);
+  if(lanceMaiorQueLances !== VALIDO) {
+    return lanceMaiorQueLances;
+  }
+  
+  if(lanceMaiorOuIgualAoInicial !== VALIDO) {
+    return lanceMaiorOuIgualAoInicial;
   }
 
-  return lanceMaiorQueInicial;
+  return lanceMaiorQueLances;
 }
 
-function validaLanceMaiorQueInicial(valor, valorInicial) {
-  if (valor > valorInicial) {
+function validaLanceMaiorOuIgualAoInicial(valor, valorInicial) {
+  if (valor >= valorInicial) {
     return VALIDO;
   }
 
