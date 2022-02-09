@@ -9,7 +9,6 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "api": "json-server --host 192.168.1.3 --watch db.json",
-    
     "test": "jest --watch --coverage=false",
     "testDebug": "jest -o --watch --coverage=false",
     "testFinal": "jest",
@@ -33,6 +32,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@testing-library/react-native": "^9.0.0",
     "react-test-renderer": "17.0.1"
   },
   "jest": {
@@ -44,6 +44,13 @@
       "!**/node_modules/**",
       "!**/babel.config.js",
       "!**/jest.setup.js"
+    ],
+    "setupFiles": [
+      "./__tests__/mock.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/__tests__/mock.js"
     ]
   },
   "private": true

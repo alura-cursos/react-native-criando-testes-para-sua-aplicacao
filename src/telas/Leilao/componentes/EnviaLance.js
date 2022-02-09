@@ -43,6 +43,7 @@ export default function EnviaLance({ enviaLance, cor }) {
     <TouchableOpacity 
       onPress={validaEnvio}
       disabled={enviando}
+      accessibilityHint="Enviar lance"
       style={estilos.botao}>
       <FontAwesome5 name="check" size={24} color="#14181B" />
     </TouchableOpacity>
