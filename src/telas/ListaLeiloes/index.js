@@ -14,10 +14,6 @@ export default function ListaLeiloes() {
     setCarregando(false);
   };
 
-  if (!leiloes || leiloes.length === 0) {
-    return <View />
-  }
-
   return (
     <FlatList
       data={leiloes}
