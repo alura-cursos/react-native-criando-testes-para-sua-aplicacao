@@ -41,7 +41,7 @@ describe("repositorio/lance", () => {
       expect(lances).toEqual(mockLances);
     });
 
-    it("deve retornar um array vazio caso erro na API", async () => {
+    it("deve retornar um array vazio caso erro na requisição", async () => {
       apiLeiloes.get.mockImplementation(() => mockRequisicaoErro());
 
       const lances = await obtemLancesDoLeilao(1);
@@ -63,7 +63,7 @@ describe("repositorio/lance", () => {
       expect(sucesso).toBe(true);
     });
 
-    it("deve retornar false caso erro na API", async () => {
+    it("deve retornar false caso dê erro na requisição", async () => {
       apiLeiloes.post.mockImplementation(() => mockRequisicaoErro());
 
       const sucesso = await adicionaLance(mockLances[0]);

@@ -46,7 +46,7 @@ describe('repositorio/leilao', () => {
       expect(leiloes).toEqual(mockLeiloes);
     });
 
-    it('deve retornar um array vazio caso erro na API', async () => {
+    it('deve retornar um array vazio caso erro na requisição', async () => {
       apiLeiloes.get.mockImplementation(() => mockRequisicaoErro());
 
       const leiloes = await obtemLeiloes();
@@ -65,7 +65,7 @@ describe('repositorio/leilao', () => {
       expect(leilao).toEqual(mockLeiloes[0]);
     });
 
-    it('deve retornar um objeto vazio caso erro na API', async () => {
+    it('deve retornar um objeto vazio caso erro na requisição', async () => {
       apiLeiloes.get.mockImplementation(() => mockRequisicaoErro());
 
       const leilao = await obtemLeilao(1);
