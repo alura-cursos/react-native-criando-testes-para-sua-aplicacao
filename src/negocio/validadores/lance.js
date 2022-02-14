@@ -2,7 +2,7 @@ import {
   VALIDO,
   INVALIDO,
   MENOR_QUE_VALOR_INICIAL,
-  MENOR_QUE_LANCES
+  MENOR_OU_IGUAL_AOS_LANCES
 } from "../constantes/estadosLance";
 
 export function validaFormatoNumericoDoLance(valorEmTexto) {
@@ -42,5 +42,5 @@ function validaLanceMaiorQueLances(valor, lances) {
     return VALIDO;
   }
 
-  return MENOR_QUE_LANCES;
+  return MENOR_OU_IGUAL_AOS_LANCES;
 }
