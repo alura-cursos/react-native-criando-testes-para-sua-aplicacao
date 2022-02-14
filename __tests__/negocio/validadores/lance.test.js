@@ -3,7 +3,7 @@ import {
   VALIDO,
   INVALIDO,
   MENOR_QUE_VALOR_INICIAL,
-  MENOR_QUE_LANCES
+  MENOR_OU_IGUAL_AOS_LANCES
 } from '../../../src/negocio/constantes/estadosLance';
 
 describe('negocio/validadores/lance', () => {
@@ -45,7 +45,7 @@ describe('negocio/validadores/lance', () => {
       expect(resultado).toBe(VALIDO);
     });
 
-    it('deve retornar MENOR_QUE_LANCES quando o valor for menor que o maior lance do leilão', () => {
+    it('deve retornar MENOR_OU_IGUAL_AOS_LANCES quando o valor for menor que o maior lance do leilão', () => {
       const valorLance = 15;
       const leilao = {
         valorInicial: 10,
@@ -59,10 +59,10 @@ describe('negocio/validadores/lance', () => {
         ],
       };
       const resultado = validaLance(valorLance, leilao);
-      expect(resultado).toBe(MENOR_QUE_LANCES);
+      expect(resultado).toBe(MENOR_OU_IGUAL_AOS_LANCES);
     });
 
-    it('deve retornar MENOR_QUE_LANCES quando o valor for igual ao maior lance do leilão', () => {
+    it('deve retornar MENOR_OU_IGUAL_AOS_LANCES quando o valor for igual ao maior lance do leilão', () => {
       const valorLance = 20;
       const leilao = {
         valorInicial: 10,
@@ -76,7 +76,7 @@ describe('negocio/validadores/lance', () => {
         ],
       };
       const resultado = validaLance(valorLance, leilao);
-      expect(resultado).toBe(MENOR_QUE_LANCES);
+      expect(resultado).toBe(MENOR_OU_IGUAL_AOS_LANCES);
     });
 
     it('deve retornar MENOR_QUE_VALOR_INICIAL quando o valor for menor que o valor inicial do leilão', () => {
