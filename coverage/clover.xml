@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1645540499283" clover="3.2.0">
-  <project timestamp="1645540499284" name="All files">
+<coverage generated="1645541153920" clover="3.2.0">
+  <project timestamp="1645541153920" name="All files">
     <metrics statements="140" coveredstatements="3" conditionals="43" coveredconditionals="0" methods="42" coveredmethods="2" elements="225" coveredelements="5" complexity="0" loc="140" ncloc="140" packages="13" files="19" classes="19"/>
     <package name="leilaoTestes">
       <metrics statements="2" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
