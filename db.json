@@ -77,6 +77,11 @@
       "valor": 800.02,
       "leilaoId": 3,
       "id": 4
+    },
+    {
+      "valor": 1200,
+      "leilaoId": 1,
+      "id": 5
     }
   ]
 }
