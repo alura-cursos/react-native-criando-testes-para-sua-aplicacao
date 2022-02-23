@@ -31,6 +31,10 @@ const mockRequisicaoErro = () => {
 
 describe('respositorio/leilao', () => {
 
+  beforeEach(() => {
+    apiLeiloes.get.mockClear();
+  });
+
   describe('obtemLeiloes', () => {
 
     it('deve retornar uma lista de leilões', async () => {
@@ -39,6 +43,9 @@ describe('respositorio/leilao', () => {
       const leiloes = await obtemLeiloes();
 
       expect(leiloes).toEqual(mockLeiloes);
+
+      expect(apiLeiloes.get).toHaveBeenCalledWith('/leiloes');
+      expect(apiLeiloes.get).toHaveBeenCalledTimes(1);
     });
 
     it('deve retornar uma lista vazia quando a requisição falhar', async () => {
@@ -47,6 +54,9 @@ describe('respositorio/leilao', () => {
       const leiloes = await obtemLeiloes();
 
       expect(leiloes).toEqual([]);
+
+      expect(apiLeiloes.get).toHaveBeenCalledWith('/leiloes');
+      expect(apiLeiloes.get).toHaveBeenCalledTimes(1);
     });
 
   });
