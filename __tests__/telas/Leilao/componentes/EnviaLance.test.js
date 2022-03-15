@@ -34,4 +34,32 @@ describe('telas/Leilao/componentes/EnviaLance', () => {
 
     expect(() => getByText(NAO_ENVIADO)).toThrow();
   });
+
+  it('deve exibir o erro quando o lance não for enviado', async () => {
+    const enviaLance = jest.fn(() => new Promise(resolve => resolve(NAO_ENVIADO)))
+
+    const {
+      getByPlaceholderText, 
+      getByA11yHint,
+      getByText
+    } = render(
+      <EnviaLance
+        enviaLance={enviaLance}
+        cor="blue"
+      />
+    );
+
+    const input = getByPlaceholderText("R$");
+    const botao = getByA11yHint("Enviar lance");
+
+    fireEvent.changeText(input, "10");
+    fireEvent.press(botao);
+
+    expect(enviaLance).toHaveBeenCalledWith("10");
+    await waitFor(() => {
+      expect(getByText(NAO_ENVIADO)).toBeTruthy();
+    });
+
+    expect(() => getByText(ENVIADO)).toThrow();
+  });
 });

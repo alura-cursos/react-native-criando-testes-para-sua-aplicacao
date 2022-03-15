@@ -22,6 +22,7 @@ export default function ListaLeiloes() {
       onRefresh={atualizaLista}
       refreshing={carregando}
       contentContainerStyle={estilos.lista}
+      testID="lista-leiloes"
     />
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
-import { KeyboardAvoidingView, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, SafeAreaView, StatusBar, StyleSheet, Platform } from 'react-native';
 import AppRotas from './src/rotas/AppRotas';
 
 export default function App() {

@@ -41,6 +41,7 @@ export default function Leilao() {
       onRefresh={atualizaLeilao}
       refreshing={carregando}
       contentContainerStyle={estilos.lista}
+      testID="lista-lances"
     />
     <EnviaLance cor={leilao.cor} enviaLance={novoLance} />
   </>
